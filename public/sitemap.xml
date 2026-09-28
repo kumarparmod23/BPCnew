@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Primary Homepage -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.bijnorpilescentre.com/favicon.png</image:loc>
+      <image:title>Bijnor Piles Centre - Best Piles Doctor in Bijnor</image:title>
+      <image:caption>बवासीर, भगन्दर एवं फिशर का स्थायी एवं दर्द-रहित क्षार सूत्र इलाज</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Piles & Kshar Sutra Treatments -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/#services</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Dedicated Female Care Wing -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/#femalecare</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Specialist Doctors Profile -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/#doctors</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Saturday Free Consultation Camp -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/#camp</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Patient Reviews & Clinical Outcomes -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/#testimonials</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Frequently Asked Questions -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/#faq</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Clinic Address, Map & Contact -->
+  <url>
+    <loc>https://www.bijnorpilescentre.com/#location</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

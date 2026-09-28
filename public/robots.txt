@@ -1,0 +1,6 @@
+# Google Search Console & Search Engine Crawlers
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://www.bijnorpilescentre.com/sitemap.xml
