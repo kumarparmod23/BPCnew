@@ -1,0 +1,6 @@
+{
+  "name": "Bijnor Piles Centre",
+  "description": "बिजनौर में बवासीर, भगन्दर एवं फिशर का स्थायी एवं दर्द-रहित क्षार सूत्र इलाज। शनिवार निःशुल्क परामर्श शिविर एवं समर्पित महिला डॉक्टर विंग।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

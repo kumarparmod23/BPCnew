@@ -1,0 +1,174 @@
+import React, { useState } from 'react';
+import { CLINIC_INFO } from '../data/clinicData';
+
+interface NavbarProps {
+  onOpenSymptomChecker: () => void;
+  onOpenCampModal: () => void;
+}
+
+export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCampModal }) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+        {/* Clinic Logo & Brand */}
+        <a href="#home" className="flex items-center gap-3 shrink-0 group">
+          <img 
+            src={CLINIC_INFO.images.logo} 
+            alt="Bijnor Piles Centre Logo" 
+            className="h-12 w-12 sm:h-14 sm:w-14 object-contain transition-transform group-hover:scale-105"
+            referrerPolicy="no-referrer"
+            onError={(e) => {
+              // Fallback if network blocked
+              (e.target as HTMLElement).style.display = 'none';
+            }}
+          />
+          <div className="flex flex-col">
+            <span className="font-heading font-extrabold text-lg sm:text-xl text-[#003675] leading-tight tracking-tight">
+              Bijnor Piles Centre
+            </span>
+            <span className="text-xs text-[#006398] font-medium tracking-normal">
+              {CLINIC_INFO.taglineHindi}
+            </span>
+          </div>
+        </a>
+
+        {/* Desktop Navigation Links */}
+        <nav className="hidden lg:flex items-center gap-6 font-medium text-sm text-slate-700">
+          <a href="#home" className="text-[#003675] font-semibold hover:text-[#006398] transition-colors">
+            होम (Home)
+          </a>
+          <a href="#services" className="hover:text-[#003675] transition-colors">
+            उपचार (Treatments)
+          </a>
+          <a href="#doctors" className="hover:text-[#003675] transition-colors">
+            विशेषज्ञ डॉक्टर्स (Doctors)
+          </a>
+          <a href="#femalecare" className="hover:text-[#003675] transition-colors">
+            महिला विंग (Female Care)
+          </a>
+          <a href="#camp" className="hover:text-[#003675] transition-colors">
+            शनिवार कैम्प (Free Camp)
+          </a>
+          <button 
+            onClick={onOpenSymptomChecker} 
+            className="text-amber-800 hover:text-amber-900 font-medium transition-colors flex items-center gap-1 cursor-pointer"
+          >
+            <span className="material-symbols-outlined text-base text-amber-600">stethoscope</span>
+            <span>लक्षण जांच</span>
+          </button>
+          <a href="#location" className="hover:text-[#003675] transition-colors">
+            स्थान (Location)
+          </a>
+        </nav>
+
+        {/* Action Buttons */}
+        <div className="flex items-center gap-2.5">
+          <a 
+            href={`tel:${CLINIC_INFO.phone}`}
+            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs md:text-sm font-semibold text-[#003675] bg-slate-100 hover:bg-slate-200 transition-colors"
+          >
+            <span className="material-symbols-outlined text-base">call</span>
+            <span>कॉल करें</span>
+          </a>
+
+          <a 
+            href={`https://wa.me/917017790760?text=${encodeURIComponent('नमस्ते Bijnor Piles Centre, मुझे बवासीर/फिशर/भगन्दर परामर्श हेतु जानकारी चाहिए।')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-95"
+          >
+            <span className="material-symbols-outlined text-base">chat</span>
+            <span>WhatsApp परामर्श</span>
+          </a>
+
+          {/* Mobile hamburger button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden p-2 text-slate-700 hover:text-[#003675] focus:outline-none"
+            aria-label="Toggle menu"
+          >
+            <span className="material-symbols-outlined text-2xl">
+              {mobileMenuOpen ? 'close' : 'menu'}
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 shadow-lg animate-in slide-in-from-top duration-200">
+          <nav className="flex flex-col space-y-2 text-sm font-medium text-slate-700">
+            <a 
+              href="#home" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 rounded-lg hover:bg-blue-50 text-[#003675] font-semibold"
+            >
+              होम (Home)
+            </a>
+            <a 
+              href="#services" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 rounded-lg hover:bg-slate-50"
+            >
+              उपचार (Treatments - बवासीर, फिशर, भगन्दर)
+            </a>
+            <a 
+              href="#doctors" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 rounded-lg hover:bg-slate-50"
+            >
+              विशेषज्ञ डॉक्टर्स (Dr. Pramod & Dr. Shivani)
+            </a>
+            <a 
+              href="#femalecare" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 rounded-lg hover:bg-pink-50 text-rose-800"
+            >
+              महिला विंग (100% Confidential Female Care)
+            </a>
+            <a 
+              href="#camp" 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenCampModal();
+              }}
+              className="py-2 px-3 rounded-lg bg-amber-50 text-amber-900 font-semibold flex items-center justify-between"
+            >
+              <span>शनिवार निःशुल्क परामर्श शिविर</span>
+              <span className="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-bold">Free Token</span>
+            </a>
+            <button 
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenSymptomChecker();
+              }}
+              className="text-left py-2 px-3 rounded-lg hover:bg-blue-50 text-[#006398] font-semibold flex items-center gap-2"
+            >
+              <span className="material-symbols-outlined text-base">stethoscope</span>
+              <span>ऑनलाइन लक्षण जांच (Symptom Assessment)</span>
+            </button>
+            <a 
+              href="#location" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 rounded-lg hover:bg-slate-50"
+            >
+              स्थान व रूट मैप (Location & Map)
+            </a>
+          </nav>
+
+          <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+            <a 
+              href={`tel:${CLINIC_INFO.phone}`}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold text-[#003675] bg-blue-50 hover:bg-blue-100"
+            >
+              <span className="material-symbols-outlined text-lg">call</span>
+              <span>हेल्पलाइन पर कॉल करें: {CLINIC_INFO.displayPhone}</span>
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+};
