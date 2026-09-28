@@ -66,13 +66,15 @@ export const DoctorsSection: React.FC<DoctorsSectionProps> = ({ onSelectDoctor }
                     <span className="text-slate-500 font-medium">
                       {doc.timings}
                     </span>
-                    <button
-                      onClick={() => onSelectDoctor(doc)}
-                      className={`font-bold hover:underline flex items-center gap-1 cursor-pointer ${linkColor}`}
-                    >
-                      <span>अपॉइंटमेंट लें</span>
-                      <span>→</span>
-                    </button>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => onSelectDoctor(doc)}
+                        className={`font-bold hover:underline flex items-center gap-0.5 cursor-pointer ${linkColor}`}
+                      >
+                        <span>अपॉइंटमेंट लें</span>
+                        <span>→</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { CLINIC_INFO } from '../data/clinicData';
+import { triggerWhatsAppAppointment } from '../utils/whatsapp';
 
 interface NavbarProps {
   onOpenSymptomChecker: () => void;
   onOpenCampModal: () => void;
+  onOpenAppointmentModal: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCampModal }) => {
+export const Navbar: React.FC<NavbarProps> = ({ 
+  onOpenSymptomChecker, 
+  onOpenCampModal,
+  onOpenAppointmentModal
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -20,7 +26,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCamp
             className="h-12 w-12 sm:h-14 sm:w-14 object-contain transition-transform group-hover:scale-105"
             referrerPolicy="no-referrer"
             onError={(e) => {
-              // Fallback if network blocked
               (e.target as HTMLElement).style.display = 'none';
             }}
           />
@@ -51,6 +56,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCamp
           <a href="#camp" className="hover:text-[#003675] transition-colors">
             शनिवार कैम्प (Free Camp)
           </a>
+          <a href="#testimonials" className="hover:text-[#003675] transition-colors">
+            मरीज अनुभव (Reviews)
+          </a>
           <button 
             onClick={onOpenSymptomChecker} 
             className="text-amber-800 hover:text-amber-900 font-medium transition-colors flex items-center gap-1 cursor-pointer"
@@ -64,7 +72,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCamp
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2 sm:gap-2.5">
+          <button
+            onClick={onOpenAppointmentModal}
+            className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-[#003675] hover:bg-blue-900 transition-colors cursor-pointer shadow-xs"
+          >
+            <span className="material-symbols-outlined text-base">calendar_month</span>
+            <span>अपॉइंटमेंट स्लॉट</span>
+          </button>
+
           <a 
             href={`tel:${CLINIC_INFO.phone}`}
             className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs md:text-sm font-semibold text-[#003675] bg-slate-100 hover:bg-slate-200 transition-colors"
@@ -73,20 +89,18 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCamp
             <span>कॉल करें</span>
           </a>
 
-          <a 
-            href={`https://wa.me/917017790760?text=${encodeURIComponent('नमस्ते Bijnor Piles Centre, मुझे बवासीर/फिशर/भगन्दर परामर्श हेतु जानकारी चाहिए।')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-95"
+          <button 
+            onClick={() => triggerWhatsAppAppointment({ source: 'Navbar WhatsApp Button' })}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-95 cursor-pointer"
           >
             <span className="material-symbols-outlined text-base">chat</span>
             <span>WhatsApp परामर्श</span>
-          </a>
+          </button>
 
           {/* Mobile hamburger button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-[#003675] focus:outline-none"
+            className="lg:hidden p-2 text-slate-700 hover:text-[#003675] focus:outline-none cursor-pointer"
             aria-label="Toggle menu"
           >
             <span className="material-symbols-outlined text-2xl">
@@ -100,6 +114,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCamp
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-4 space-y-3 shadow-lg animate-in slide-in-from-top duration-200">
           <nav className="flex flex-col space-y-2 text-sm font-medium text-slate-700">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenAppointmentModal();
+              }}
+              className="py-2.5 px-3 rounded-lg bg-[#003675] text-white font-bold flex items-center justify-between text-left cursor-pointer"
+            >
+              <span>अपॉइंटमेंट स्लॉट बुक करें (Book Appointment)</span>
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </button>
             <a 
               href="#home" 
               onClick={() => setMobileMenuOpen(false)}
@@ -139,12 +163,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCamp
               <span>शनिवार निःशुल्क परामर्श शिविर</span>
               <span className="text-xs bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-bold">Free Token</span>
             </a>
+            <a 
+              href="#testimonials" 
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2 px-3 rounded-lg hover:bg-slate-50 flex items-center justify-between"
+            >
+              <span>मरीज अनुभव व सफलता कहानियां (Reviews)</span>
+              <span className="text-amber-500 text-xs">★★★★★</span>
+            </a>
             <button 
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenSymptomChecker();
               }}
-              className="text-left py-2 px-3 rounded-lg hover:bg-blue-50 text-[#006398] font-semibold flex items-center gap-2"
+              className="text-left py-2 px-3 rounded-lg hover:bg-blue-50 text-[#006398] font-semibold flex items-center gap-2 cursor-pointer"
             >
               <span className="material-symbols-outlined text-base">stethoscope</span>
               <span>ऑनलाइन लक्षण जांच (Symptom Assessment)</span>
@@ -159,6 +191,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenSymptomChecker, onOpenCamp
           </nav>
 
           <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                triggerWhatsAppAppointment({ source: 'Mobile Menu WhatsApp Action' });
+              }}
+              className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
+            >
+              <span className="material-symbols-outlined text-base">chat</span>
+              <span>WhatsApp पर सीधे चैट शुरू करें</span>
+            </button>
             <a 
               href={`tel:${CLINIC_INFO.phone}`}
               className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold text-[#003675] bg-blue-50 hover:bg-blue-100"

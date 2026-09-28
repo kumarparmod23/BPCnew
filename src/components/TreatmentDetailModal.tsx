@@ -1,6 +1,7 @@
 import React from 'react';
 import { Treatment } from '../types';
 import { CLINIC_INFO } from '../data/clinicData';
+import { triggerWhatsAppAppointment } from '../utils/whatsapp';
 
 interface TreatmentDetailModalProps {
   treatment: Treatment | null;
@@ -14,6 +15,13 @@ export const TreatmentDetailModal: React.FC<TreatmentDetailModalProps> = ({
   onBookTreatment
 }) => {
   if (!treatment) return null;
+
+  const handleWhatsAppBooking = () => {
+    triggerWhatsAppAppointment({
+      condition: treatment.titleHindi,
+      source: `Treatment Modal: ${treatment.titleEnglish}`
+    });
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
@@ -121,15 +129,14 @@ export const TreatmentDetailModal: React.FC<TreatmentDetailModalProps> = ({
             >
               परामर्श स्लॉट बुक करें
             </button>
-            <a
-              href={`https://wa.me/917017790760?text=${encodeURIComponent(`नमस्ते, मुझे ${treatment.titleHindi} के आयुर्वेदिक उपचार व परामर्श की जानकारी चाहिए।`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-1 shadow-sm transition-all"
+            <button
+              type="button"
+              onClick={handleWhatsAppBooking}
+              className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm px-3.5 py-2 rounded-xl flex items-center gap-1 shadow-sm transition-all cursor-pointer"
             >
               <span className="material-symbols-outlined text-sm">chat</span>
-              <span>WhatsApp</span>
-            </a>
+              <span>WhatsApp पर पूछें</span>
+            </button>
           </div>
         </div>
       </div>

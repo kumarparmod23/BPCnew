@@ -1,11 +1,20 @@
 import React from 'react';
 import { CLINIC_INFO } from '../data/clinicData';
+import { triggerWhatsAppAppointment } from '../utils/whatsapp';
 
 interface FemaleCareSectionProps {
   onBookFemaleDoctor: () => void;
 }
 
 export const FemaleCareSection: React.FC<FemaleCareSectionProps> = ({ onBookFemaleDoctor }) => {
+  const handleDirectWhatsAppFemale = () => {
+    triggerWhatsAppAppointment({
+      doctorPreference: 'Dr. Shivani Chaudhary (Female Specialist - महिला विंग)',
+      condition: 'महिला गुदा रोग परामर्श (बवासीर/फिशर/पेल्विक पेन)',
+      source: 'Dedicated Female Care Wing Section'
+    });
+  };
+
   return (
     <section className="py-16 bg-white border-b border-slate-200" id="femalecare">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -86,11 +95,20 @@ export const FemaleCareSection: React.FC<FemaleCareSectionProps> = ({ onBookFema
 
               <div className="pt-3 flex flex-wrap items-center gap-3">
                 <button
-                  onClick={onBookFemaleDoctor}
+                  type="button"
+                  onClick={handleDirectWhatsAppFemale}
                   className="bg-rose-700 hover:bg-rose-800 text-white font-bold px-5 py-2.5 rounded-xl text-sm shadow-sm transition-all flex items-center gap-2 cursor-pointer active:scale-95"
                 >
                   <span className="material-symbols-outlined text-base">chat</span>
-                  <span>महिला डॉक्टर से परामर्श बुक करें</span>
+                  <span>महिला डॉक्टर से WhatsApp परामर्श बुक करें</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onBookFemaleDoctor}
+                  className="bg-white hover:bg-rose-50 text-rose-800 border border-rose-200 font-semibold px-4 py-2.5 rounded-xl text-xs sm:text-sm shadow-xs transition-colors cursor-pointer"
+                >
+                  स्लॉट फॉर्म भरें
                 </button>
 
                 <a 

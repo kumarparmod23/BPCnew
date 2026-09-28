@@ -45,3 +45,18 @@ export interface CampToken {
   doctorPreference: string;
   generatedAt: string;
 }
+
+export interface Testimonial {
+  id: string;
+  patientName: string;
+  location: string;
+  age?: number;
+  condition: string;
+  conditionCategory: 'all' | 'piles' | 'fissure' | 'fistula' | 'sinus' | 'female';
+  rating: number;
+  doctorTreated: string;
+  recoveryTime: string;
+  story: string;
+  verified: boolean;
+  date: string;
+}

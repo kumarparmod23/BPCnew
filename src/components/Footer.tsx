@@ -73,6 +73,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenCampModal, onOpenSymptomCh
               <li>
                 <a href="#services" className="hover:text-white transition-colors">• रबर बैंड लिगेशन प्रक्रिया</a>
               </li>
+              <li>
+                <a href="#testimonials" className="hover:text-amber-200 text-amber-300 font-semibold transition-colors flex items-center gap-1">
+                  <span>★</span>
+                  <span>मरीज अनुभव (Patient Stories)</span>
+                </a>
+              </li>
             </ul>
           </div>
 

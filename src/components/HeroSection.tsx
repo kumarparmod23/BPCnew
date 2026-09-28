@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { CLINIC_INFO } from '../data/clinicData';
 import { BookingFormData } from '../types';
+import { triggerWhatsAppAppointment } from '../utils/whatsapp';
 
 interface HeroSectionProps {
   onSuccessBooking?: (data: BookingFormData) => void;
   onOpenSymptomChecker?: () => void;
+  onOpenAppointmentModal?: (doctor?: string, condition?: string) => void;
 }
 
-export const HeroSection: React.FC<HeroSectionProps> = ({ onSuccessBooking, onOpenSymptomChecker }) => {
+export const HeroSection: React.FC<HeroSectionProps> = ({ 
+  onSuccessBooking, 
+  onOpenSymptomChecker,
+  onOpenAppointmentModal
+}) => {
   const [formData, setFormData] = useState<BookingFormData>({
     patientName: '',
     phone: '',
@@ -39,26 +45,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSuccessBooking, onOp
     setIsSubmitting(true);
     setShowSuccessToast(true);
 
-    const formattedMessage =
-      `🏥 *Bijnor Piles Centre - नया अपॉइंटमेंट स्लॉट अनुरोध*\n\n` +
-      `नमस्ते डॉक्टर, मुझे परामर्श हेतु अपॉइंटमेंट स्लॉट बुक करना है। मरीज का विवरण निम्नवत है:\n\n` +
-      `👤 *मरीज का नाम (Patient Name):* ${cleanName}\n` +
-      `📞 *मोबाइल नंबर (Mobile No):* ${formData.phone}\n` +
-      `🩺 *समस्या (Condition):* ${formData.condition}\n` +
-      `👨‍⚕️ *डॉक्टर प्राथमिकता (Doctor Preference):* ${formData.doctorPreference}\n` +
-      `🌐 *स्रोत (Source):* Bijnor Piles Centre Website Slot Booking\n\n` +
-      `कृपया स्लॉट एवं समय की पुष्टि करने की कृपा करें। धन्यवाद!`;
-
-    const waUrl = `https://wa.me/917017790760?text=${encodeURIComponent(formattedMessage)}`;
-
     if (onSuccessBooking) {
       onSuccessBooking(formData);
     }
 
     setTimeout(() => {
-      window.open(waUrl, '_blank');
+      triggerWhatsAppAppointment({
+        patientName: cleanName,
+        phone: formData.phone,
+        condition: formData.condition,
+        doctorPreference: formData.doctorPreference,
+        source: 'Fast-Track Registration Card'
+      });
       setIsSubmitting(false);
-    }, 600);
+    }, 400);
   };
 
   return (
@@ -129,15 +129,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSuccessBooking, onOp
 
             {/* Primary CTAs */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a 
-                href={`https://wa.me/917017790760?text=${encodeURIComponent('नमस्ते, मुझे Bijnor Piles Centre में अपॉइंटमेंट/परामर्श के लिए स्लॉट बुक करना है।')}`}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                type="button"
+                onClick={() => triggerWhatsAppAppointment({ source: 'Hero Section CTA' })}
                 className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all active:scale-95 text-sm sm:text-base cursor-pointer"
               >
                 <span className="material-symbols-outlined text-lg">chat</span>
                 <span>व्हाट्सएप पर तुरंत समय लें</span>
-              </a>
+              </button>
 
               <a 
                 href={`tel:${CLINIC_INFO.phone}`}
