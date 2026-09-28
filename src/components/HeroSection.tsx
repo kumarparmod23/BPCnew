@@ -85,54 +85,54 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             </div>
 
             {/* Headline */}
-            <div className="space-y-3">
-              <h1 className="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 leading-tight">
+            <div className="space-y-2 sm:space-y-3">
+              <h1 className="font-heading font-extrabold text-2xl sm:text-4xl lg:text-5xl text-slate-900 leading-tight">
                 बवासीर, भगन्दर एवं फिशर का <br className="hidden sm:inline" />
                 <span className="text-[#003675]">स्थायी एवं दर्द-रहित इलाज</span>
               </h1>
-              <p className="text-base sm:text-lg text-[#006398] font-semibold">
+              <p className="text-sm sm:text-lg text-[#006398] font-semibold">
                 {CLINIC_INFO.motto}
               </p>
             </div>
 
             {/* Description */}
-            <p className="text-slate-600 text-base leading-relaxed max-w-2xl">
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-2xl">
               बिजनौर पाइल्स सेंटर में आधुनिक चिकित्सा जांच और पारंपरिक आयुर्वेदिक क्षार सूत्र सर्जरी द्वारा बवासीर (Piles), फिशर (Fissure), भगन्दर (Fistula) एवं नाड़ी व्रण (Pilonidal Sinus) का जड़ से सुरक्षित उपचार किया जाता है। अस्पताल में बिना रुके केवल कुछ घंटों में सामान्य दिनचर्या में वापसी।
             </p>
 
             {/* Key Metric Highlights */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm text-center hover:border-blue-300 transition-colors">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2">
+              <div className="bg-white p-3 sm:p-3.5 rounded-xl border border-slate-200 shadow-xs text-center hover:border-blue-300 transition-colors">
                 <span className="material-symbols-outlined text-[#006398] text-2xl">healing</span>
-                <p className="font-heading font-bold text-slate-900 text-sm mt-1">क्षार सूत्र पद्धति</p>
-                <p className="text-[11px] text-slate-500 font-medium">दोबारा होने का खतरा नगण्य</p>
+                <p className="font-heading font-bold text-slate-900 text-xs sm:text-sm mt-1">क्षार सूत्र पद्धति</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium">दोबारा होने का खतरा नगण्य</p>
               </div>
 
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm text-center hover:border-pink-300 transition-colors">
+              <div className="bg-white p-3 sm:p-3.5 rounded-xl border border-slate-200 shadow-xs text-center hover:border-pink-300 transition-colors">
                 <span className="material-symbols-outlined text-rose-600 text-2xl">female</span>
-                <p className="font-heading font-bold text-slate-900 text-sm mt-1">महिला डॉक्टर</p>
-                <p className="text-[11px] text-slate-500 font-medium">100% महिला गोपनीयता</p>
+                <p className="font-heading font-bold text-slate-900 text-xs sm:text-sm mt-1">महिला डॉक्टर</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium">100% महिला गोपनीयता</p>
               </div>
 
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm text-center hover:border-blue-300 transition-colors">
+              <div className="bg-white p-3 sm:p-3.5 rounded-xl border border-slate-200 shadow-xs text-center hover:border-blue-300 transition-colors">
                 <span className="material-symbols-outlined text-[#003675] text-2xl">schedule</span>
-                <p className="font-heading font-bold text-slate-900 text-sm mt-1">1 घंटे में छुट्टी</p>
-                <p className="text-[11px] text-slate-500 font-medium">कोई लंबा बेड रेस्ट नहीं</p>
+                <p className="font-heading font-bold text-slate-900 text-xs sm:text-sm mt-1">1 घंटे में छुट्टी</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium">कोई लंबा बेड रेस्ट नहीं</p>
               </div>
 
-              <div className="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm text-center hover:border-emerald-300 transition-colors">
+              <div className="bg-white p-3 sm:p-3.5 rounded-xl border border-slate-200 shadow-xs text-center hover:border-emerald-300 transition-colors">
                 <span className="material-symbols-outlined text-emerald-600 text-2xl">mood</span>
-                <p className="font-heading font-bold text-slate-900 text-sm mt-1">दर्द-रहित प्रक्रिया</p>
-                <p className="text-[11px] text-slate-500 font-medium">संतुष्ट मरीज अनुभव</p>
+                <p className="font-heading font-bold text-slate-900 text-xs sm:text-sm mt-1">दर्द-रहित प्रक्रिया</p>
+                <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium">संतुष्ट मरीज अनुभव</p>
               </div>
             </div>
 
             {/* Primary CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => triggerWhatsAppAppointment({ source: 'Hero Section CTA' })}
-                className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all active:scale-95 text-sm sm:text-base cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl shadow-md transition-all active:scale-95 text-sm sm:text-base cursor-pointer"
               >
                 <span className="material-symbols-outlined text-lg">chat</span>
                 <span>व्हाट्सएप पर तुरंत समय लें</span>
@@ -140,20 +140,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
               <a 
                 href={`tel:${CLINIC_INFO.phone}`}
-                className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold px-5 py-3 rounded-xl shadow-sm transition-all active:scale-95 text-sm sm:text-base"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-300 text-slate-800 font-bold px-4 py-3 rounded-xl shadow-sm transition-all active:scale-95 text-sm sm:text-base"
               >
                 <span className="material-symbols-outlined text-lg text-[#003675]">call</span>
-                <span>{CLINIC_INFO.displayPhone} पर कॉल करें</span>
+                <span>{CLINIC_INFO.displayPhone}</span>
               </a>
 
               {onOpenSymptomChecker && (
                 <button
                   type="button"
                   onClick={onOpenSymptomChecker}
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-800 hover:text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-2 rounded-xl transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-amber-800 hover:text-amber-900 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-2.5 rounded-xl transition-colors cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-sm text-amber-600">help</span>
-                  <span>लक्षण समझ नहीं आ रहे? जाँचें</span>
+                  <span>लक्षण जाँचें</span>
                 </button>
               )}
             </div>
@@ -166,8 +166,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           {/* Hero Right Column: Fast-Track Registration Card */}
-          <div className="lg:col-span-5">
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xl overflow-hidden p-6 sm:p-7 relative">
+          <div className="lg:col-span-5 w-full">
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xl overflow-hidden p-4 sm:p-7 relative">
               <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#003675] via-[#006398] to-emerald-500"></div>
               
               <div className="flex items-center justify-between mb-5">

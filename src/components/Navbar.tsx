@@ -16,31 +16,31 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm w-full">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4 w-full">
         {/* Clinic Logo & Brand */}
-        <a href="#home" className="flex items-center gap-3 shrink-0 group">
+        <a href="#home" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink group">
           <img 
             src={CLINIC_INFO.images.logo} 
             alt="Bijnor Piles Centre Logo" 
-            className="h-12 w-12 sm:h-14 sm:w-14 object-contain transition-transform group-hover:scale-105"
+            className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain transition-transform group-hover:scale-105 shrink-0"
             referrerPolicy="no-referrer"
             onError={(e) => {
               (e.target as HTMLElement).style.display = 'none';
             }}
           />
-          <div className="flex flex-col">
-            <span className="font-heading font-extrabold text-lg sm:text-xl text-[#003675] leading-tight tracking-tight">
+          <div className="flex flex-col min-w-0">
+            <span className="font-heading font-extrabold text-sm sm:text-lg lg:text-xl text-[#003675] leading-tight tracking-tight truncate">
               Bijnor Piles Centre
             </span>
-            <span className="text-xs text-[#006398] font-medium tracking-normal">
+            <span className="text-[10px] sm:text-xs text-[#006398] font-medium tracking-normal truncate hidden sm:block">
               {CLINIC_INFO.taglineHindi}
             </span>
           </div>
         </a>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-6 font-medium text-sm text-slate-700">
+        <nav className="hidden lg:flex items-center gap-5 xl:gap-6 font-medium text-xs xl:text-sm text-slate-700">
           <a href="#home" className="text-[#003675] font-semibold hover:text-[#006398] transition-colors">
             होम (Home)
           </a>
@@ -72,10 +72,10 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-2 sm:gap-2.5">
+        <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
           <button
             onClick={onOpenAppointmentModal}
-            className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-[#003675] hover:bg-blue-900 transition-colors cursor-pointer shadow-xs"
+            className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-[#003675] hover:bg-blue-900 transition-colors cursor-pointer shadow-xs whitespace-nowrap"
           >
             <span className="material-symbols-outlined text-base">calendar_month</span>
             <span>अपॉइंटमेंट स्लॉट</span>
@@ -83,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <a 
             href={`tel:${CLINIC_INFO.phone}`}
-            className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs md:text-sm font-semibold text-[#003675] bg-slate-100 hover:bg-slate-200 transition-colors"
+            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-lg text-xs md:text-sm font-semibold text-[#003675] bg-slate-100 hover:bg-slate-200 transition-colors whitespace-nowrap"
           >
             <span className="material-symbols-outlined text-base">call</span>
             <span>कॉल करें</span>
@@ -91,16 +91,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button 
             onClick={() => triggerWhatsAppAppointment({ source: 'Navbar WhatsApp Button' })}
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-95 cursor-pointer"
+            className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs md:text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 shadow-sm transition-all active:scale-95 cursor-pointer whitespace-nowrap"
           >
             <span className="material-symbols-outlined text-base">chat</span>
-            <span>WhatsApp परामर्श</span>
+            <span className="hidden sm:inline">WhatsApp परामर्श</span>
+            <span className="sm:hidden">WhatsApp</span>
           </button>
 
           {/* Mobile hamburger button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-slate-700 hover:text-[#003675] focus:outline-none cursor-pointer"
+            className="lg:hidden p-1.5 text-slate-700 hover:text-[#003675] focus:outline-none cursor-pointer"
             aria-label="Toggle menu"
           >
             <span className="material-symbols-outlined text-2xl">

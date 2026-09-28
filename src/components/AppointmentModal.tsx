@@ -101,32 +101,32 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-4 bg-slate-900/60 backdrop-blur-xs">
       <div 
-        className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200 transition-all"
+        className="bg-white rounded-2xl sm:rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200 transition-all max-h-[92vh] flex flex-col"
         role="dialog"
         aria-modal="true"
       >
         {/* Header */}
-        <div className="bg-[#003675] text-white p-5 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-emerald-400">
-              <span className="material-symbols-outlined text-2xl">
+        <div className="bg-[#003675] text-white p-4 sm:p-5 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white/10 flex items-center justify-center text-emerald-400 shrink-0">
+              <span className="material-symbols-outlined text-xl sm:text-2xl">
                 {isSubmitted ? 'task_alt' : 'chat'}
               </span>
             </div>
-            <div>
-              <span className="text-[11px] uppercase tracking-wider text-sky-200 font-bold block">
+            <div className="min-w-0">
+              <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-sky-200 font-bold block truncate">
                 {isSubmitted ? 'Appointment Confirmed' : 'Direct WhatsApp Connect'}
               </span>
-              <h3 className="font-heading font-extrabold text-base sm:text-lg">
+              <h3 className="font-heading font-extrabold text-sm sm:text-lg truncate">
                 {isSubmitted ? 'अपॉइंटमेंट अनुरोध तैयार है' : 'अपॉइंटमेंट स्लॉट बुक करें'}
               </h3>
             </div>
           </div>
           <button 
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+            className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer shrink-0 ml-2"
             aria-label="Close modal"
           >
             <span className="material-symbols-outlined text-xl">close</span>
@@ -134,7 +134,7 @@ export const AppointmentModal: React.FC<AppointmentModalProps> = ({
         </div>
 
         {/* Body */}
-        <div className="p-6 max-h-[80vh] overflow-y-auto">
+        <div className="p-4 sm:p-6 overflow-y-auto flex-grow">
           {!isSubmitted ? (
             <>
               {/* Quick Notice */}

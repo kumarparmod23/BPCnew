@@ -50,7 +50,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#f7f9fb] text-slate-800 antialiased min-h-screen flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900 pb-16 lg:pb-0">
+    <div className="bg-[#f7f9fb] text-slate-800 antialiased min-h-screen flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900 pb-20 lg:pb-0 w-full max-w-full overflow-x-hidden min-w-0">
       {/* Top Announcement Bar */}
       <TopBar onOpenCampModal={() => setIsCampModalOpen(true)} />
 
@@ -62,7 +62,7 @@ export default function App() {
       />
 
       {/* Main Body */}
-      <main className="flex-grow">
+      <main className="flex-grow w-full max-w-full min-w-0">
         {/* Hero Section with Live Booking Card */}
         <HeroSection 
           onOpenSymptomChecker={() => setIsSymptomCheckerOpen(true)}

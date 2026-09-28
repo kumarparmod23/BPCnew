@@ -74,8 +74,8 @@ export const PatientTestimonialsSection: React.FC<PatientTestimonialsSectionProp
         </div>
 
         {/* Interactive Filter Bar & View Toggle */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-100 rounded-xl text-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8 w-full">
+          <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl text-xs overflow-x-auto max-w-full scrollbar-none whitespace-nowrap">
             <button
               onClick={() => { setActiveFilter('all'); setCurrentPage(0); }}
               className={`px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
