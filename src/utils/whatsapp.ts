@@ -81,8 +81,23 @@ export const getWhatsAppUrl = (params: WhatsAppAppointmentParams = {}): string =
  * Utility to immediately trigger opening WhatsApp on mobile or desktop
  */
 export const triggerWhatsAppAppointment = (params: WhatsAppAppointmentParams = {}): void => {
-  const url = getWhatsAppUrl(params);
+  // Track Meta Pixel Conversion Event
   if (typeof window !== 'undefined') {
+    try {
+      const win = window as unknown as { fbq?: (...args: unknown[]) => void };
+      if (typeof win.fbq === 'function') {
+        win.fbq('track', 'Lead', {
+          content_name: params.condition || 'Consultation',
+          content_category: params.doctorPreference || 'Specialist',
+          source: params.source || 'Website'
+        });
+        win.fbq('track', 'Contact');
+      }
+    } catch {
+      // Ignore tracking errors to never block user action
+    }
+    
+    const url = getWhatsAppUrl(params);
     window.open(url, '_blank', 'noopener,noreferrer');
   }
 };
